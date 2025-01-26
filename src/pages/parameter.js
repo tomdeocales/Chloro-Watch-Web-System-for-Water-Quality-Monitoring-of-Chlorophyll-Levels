@@ -5,7 +5,7 @@ import 'firebase/database';
 
 const firebaseConfig = {
     apiKey: "",
-    authDomain: "lake-d30ad.firebaseapp.com",
+    authDomain: "",
     databaseURL: "",
     projectId: "",
     storageBucket: "",
