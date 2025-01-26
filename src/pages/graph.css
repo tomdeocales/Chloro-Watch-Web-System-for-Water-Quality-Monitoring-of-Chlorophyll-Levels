@@ -1,0 +1,132 @@
+/* General styling for all graph containers */
+.graphs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between containers */
+    justify-content: flex-start; /* Align items to the start (left) */
+    padding-top: 20px; /* Padding around the container */
+    position: relative; /* Add relative positioning */
+    box-sizing: border-box; /* Include padding in width calculations */
+}
+
+/* Individual graph box styling */
+.graph-box {
+    position: relative; /* Ensure positioning context for child elements */
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: calc(525px + 60px); /* Maintain width to accommodate 'View' button */
+    height: 350px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    justify-content: flex-start; /* Align content to the start (left) */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+/* Ensure the graph content is wider than the container if necessary */
+.graph-box .plot {
+    min-width: 100%; /* Ensure the plot takes at least full width of the container */
+    flex-shrink: 0; /* Prevent the plot from shrinking */
+}
+/* View text styling */
+.view-text {
+    position: absolute;
+    top: 10px;
+    right: 20px; /* Adjust to ensure it's not overlapping with the graph */
+    color: #025cbb; /* Blue text color */
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 10; /* Ensure text is above other content */
+}
+
+
+.water-plot {
+  border-bottom: 2px solid #038d36; /* Red color for Total Phosphorus */
+}
+/* graph.css */
+
+/* General styling for container */
+.details-container {
+    display: flex;
+    flex-direction: column; /* Stack vertically for small screens */
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Flex container for chart and table side-by-side */
+  .chart-and-table {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Space between chart and table */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+  
+  /* Styling for chart container */
+  .chart-container {
+    position: relative; /* Ensure positioning context for child elements */
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: calc(815px + 60px); /* Maintain width to accommodate 'View' button */
+    height: 350px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    justify-content: flex-start; /* Align content to the start (left) */
+    padding: 175px;
+    box-sizing: border-box; /* Include padding in width/height calculations */
+  }
+  
+  /* Styling for table container */
+  .data-table {
+    overflow-x: auto;
+    flex: 1;
+    background: #fff;
+    border-radius: 15px;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 300px; /* Ensure minimum width for better readability */
+  }
+  
+  /* Responsive table styling */
+  .data-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .data-table th {
+    background-color: #003b3f;
+  }
+  
+  /* Responsive adjustments for small screens */
+  @media (max-width: 768px) {
+    .chart-and-table {
+      flex-direction: column; /* Stack vertically on small screens */
+    }
+  
+    .chart-container,
+    .data-table {
+      width: 100%; /* Ensure they take full width in stacked layout */
+      min-width: 0; /* Remove minimum width constraints */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .chart-container,
+    .data-table {
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  }
+  

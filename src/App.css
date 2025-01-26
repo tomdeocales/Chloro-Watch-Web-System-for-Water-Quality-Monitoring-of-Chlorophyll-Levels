@@ -1,0 +1,874 @@
+/*====================================
+Website Name: >Chloro Watch | Laguna State Polytechnic University
+Front End By: Mark Nicholas Razon
+
+Table of contents:
+  - Root & Themes            
+  - Dark & Light Mode        
+  - Fonts
+	- General
+  - Sidebar
+  - Overview Dash
+  - Home 
+  - Footer
+  - Map
+  - Analysis 
+  - About
+  - Media Query
+====================================*/
+
+/*------------------------------------
+  Root & Themes
+------------------------------------*/
+body{
+  --gray: #F0F0F0;
+  --blue: #339935;
+  --light-blue: #000000fd;
+  --white: #FFFFFF;
+  --black: #000000;
+  --green: #008000;
+  --yellow: #FFFF00;
+  --red: #FF0000;
+
+  --txt-white: #FFFFFF;
+
+  --fade-white: rgba(255,255,255,0.5);
+  --fade-blue: rgba(45, 97, 121, 0.2);
+
+  --svg-blue: brightness(0) saturate(100%) invert(30%) sepia(73%) saturate(314%) hue-rotate(154deg) brightness(98%) contrast(101%);
+  --svg-toggle: brightness(0) saturate(100%) invert(55%) sepia(97%) saturate(835%) hue-rotate(1deg) brightness(105%) contrast(103%);
+  --svg-white: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(180deg) brightness(107%) contrast(102%);
+}
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+/*------------------------------------
+  Dark & Light Mode
+------------------------------------*/
+
+/*------------------------------------
+  Fonts
+------------------------------------*/
+@font-face {
+  font-family: signika;
+  src: url(./assets/fonts/Signika-Regular.ttf);
+}
+
+/*------------------------------------
+  General
+------------------------------------*/
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: signika;
+}
+/*------------------------------------
+  Sidebar
+------------------------------------*/
+.sidebar {
+  height: 100vh;
+  width: 70px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, var(--blue), var(--light-blue)); 
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar.open {
+  width: 250px;
+}
+
+.sidebar nav {
+  padding: 15px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+.sidebar li a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--white);
+}
+.active{
+  background-color: rgba(255,255,255,.2);
+}
+.sidebar li img{
+  height: 20px;
+  filter: var(--svg-white);
+  margin-right: 30px;
+}
+.show{
+  display: flex;
+}
+.hide{
+  display: none;
+}
+.toggle-btn {
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: white;
+  padding: 15px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+
+/*------------------------------------
+  Overview Dash
+------------------------------------*/
+.main-dash {
+  width: calc(100% - 100px);
+  padding: 15px;
+  margin-left: 70px;
+  overflow-x: hidden;
+}
+.overview-dash{
+  border-bottom: 1px solid var(--gray);
+  padding: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+}
+.overview-dash .over-left .overview-profile{
+  display: flex;
+  align-items: center;
+}
+.overview-dash .over-left .overview-profile img{
+  height: 50px;
+  margin-right: 15px;
+}
+.overview-dash .over-left .overview-profile span h1{
+  font-size: 1.3em;
+  font-weight: normal;
+}
+.overview-dash .over-left .overview-profile span p{
+  color: rgba(0,0,0,.4);
+  font-size: .9em;
+  font-style: italic;
+}
+.overview-dash .over-right{
+  margin-left: auto;
+  margin-right: 0;
+}
+.weather-forecast{
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(rgba(3, 88, 17, 0.288), rgba(7, 92, 14, 0.397)), url(./assets/img/weather2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.weather-forecast .left-weather{
+  color: var(--white);
+  margin-right: 20px;
+}
+.weather-forecast .left-weather span{
+  background-color: rgba(2, 58, 2, 0.747);
+  padding: 10px 20px;
+  display: block;
+  border-radius: 40px;
+  margin-bottom: 5px;
+  font-size: .8em;
+}
+.weather-forecast .right-weather{
+  display: flex;
+  align-items: center;
+}
+.weather-forecast .right-weather p{
+  color: var(--white);
+  margin-right: 8px;
+}
+.weather-forecast .right-weather img{
+  height: 40px;
+}
+@media(max-width: 768px){
+  .overview-dash,
+  .weather-forecast{
+    display: block;
+  }
+  .overview-dash .over-right{
+    margin-top: 20px;
+  }
+}
+
+/*------------------------------------
+  Home
+------------------------------------*/
+.home-page{
+  margin-top: 20px;
+}
+.home-page .home-flex {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+/*Map BG color*/
+.home-page .home-flex .hf-left .home-map-analysis,
+.home-page .home-flex .hf-right .home-water-quality-analysis{
+  box-shadow: rgba(46, 46, 46, 0.2) 0px 2px 8px 0px;
+  border-radius: 12px;
+  background-color: var(--white);
+  overflow: hidden;
+  padding: 12px;
+}
+.home-page .home-flex .hf-left .home-map-analysis .home-map-flex,
+.home-page .home-flex .hf-right .home-water-quality-analysis .home-map-flex{
+  display: flex;
+  align-items: center;
+}
+.home-page .home-flex .hf-left .home-map-analysis .home-map-flex h1,
+.home-page .home-flex .hf-right .home-water-quality-analysis .home-map-flex h1{
+  font-size: 1.0897em;
+  font-weight: normal;
+}
+.home-page .home-flex .hf-left .home-map-analysis .home-map-flex a{
+  margin-left: auto;
+  margin-right: 0;
+  text-decoration: none;
+  color: var(--blue);
+  transition: color 0.3s ease;
+  font-size: .9em;
+}
+.home-page .home-flex .hf-right .home-water-quality-analysis .home-map-flex a{
+  margin-left: auto;
+  margin-right: 0;
+  text-decoration: none;
+  color: var(--blue);
+  transition: color 0.3s ease;
+  font-size: .8em;
+}
+.home-page .home-flex .hf-left .home-map-analysis .home-map-flex a:hover,
+.home-page .home-flex .hf-right .home-water-quality-analysis .home-map-flex a:hover{
+  color: var(--light-blue);
+}
+.home-page .home-flex .hf-left .home-map-analysis .main-map{
+  display: flex;
+  margin-top: 12px;
+}
+.home-page .home-flex .hf-left .home-map-analysis .main-map .main-map-left {
+  height: 500px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.main-map .leaflet-container {
+  height: 100%;
+  z-index: 1;
+}
+
+
+/*Parameters Border*/
+.home-page .home-flex .hf-right .hf-analysis-grid{
+  display: grid;
+  grid-row: var(--black);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item {
+  padding: 12px;
+  border-radius: 10px;
+  min-height: 160px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item.oligotrophic {
+  box-shadow: rgba(141, 141, 141, 0.616) 1px 1px 4px;
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item.mesotrophic {
+  box-shadow: rgba(173, 94, 2, 0.8) 0px 0px 10px;
+  animation: blink1 1s infinite;
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item.eutrophic {
+  box-shadow: rgba(255, 0, 0, 0.8) 0px 0px 10px;
+  animation: blink 1s infinite;
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item.normal {
+  box-shadow: rgba(141, 141, 141, 0.616) 1px 1px 4px;
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item.low {
+  box-shadow: rgba(255, 0, 0, 0.8) 0px 0px 10px;
+  animation: blink 1s infinite;
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item.high {
+  box-shadow: rgba(255, 0, 0, 0.8) 0px 0px 10px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    box-shadow: rgba(255, 0, 0, 0.8) 0px 0px 10px;
+  }
+  50% {
+    box-shadow: rgba(255, 0, 0, 0) 0px 0px 10px;
+  }
+}
+@keyframes blink1 {
+  0%, 100% {
+    box-shadow: rgba(173, 94, 2, 0.8) 0px 0px 10px;
+  }
+  50% {
+    box-shadow: rgba(255, 0, 0, 0) 0px 0px 10px;
+  }
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item .hf-analyze p {
+  color: rgba(0, 0, 0, 0.568);
+}
+
+.status-indicator {
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.oligotrophic-indicator{
+  color: green;
+}
+
+.mesotrophic-indicator{
+  color: rgba(173, 94, 2, 0.8);
+}
+
+.eutrophic-indicator{
+  color: red;
+}
+
+.low-indicator {
+  color: blue;
+}
+
+.normal-indicator {
+  color: green;
+}
+
+.high-indicator {
+  color: red;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #f0f5f9;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card h1 {
+  font-size: 2.5rem;
+  color: #444;
+  margin: 10px 0;
+}
+
+.card img {
+  width: 60px;
+  margin-top: 15px;
+}
+
+.chlorophyll-card {
+  background-color: #e1f7e1;
+}
+
+.temperature-card {
+  background-color: #ffe5d4;
+}
+
+.ph-card {
+  background-color: #d4f1f4;
+}
+
+.oxygen-card {
+  background-color: #e0e5f5;
+}
+
+
+/*Parameter data Font c style*/
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item .hf-analyze h1{
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.3em;
+  font-style: normal;
+}
+
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item .hf-analyze h1.Excellent{
+  color: var(--green);
+}
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item .hf-analyze h1.Good{
+  color: var(--yellow);
+}
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item .hf-analyze h1.Poor{
+  color: var(--red);
+}
+
+/*Parameter Box Image*/
+.home-page .home-flex .hf-right .hf-analysis-grid .hf-analysis-item .hf-analyze img{
+  position: absolute;
+  height: 120px;
+  bottom: -30px;
+  right: -30px;
+  z-index: -1;
+  opacity:  .2;
+}
+.home-page .home-flex .hf-right .home-water-quality-analysis .main-analysis {
+  overflow: auto; 
+}
+.home-page .home-flex .hf-right .home-water-quality-analysis .main-analysis::-webkit-scrollbar {
+  height: 4px;
+}
+.home-page .home-flex .hf-right .home-water-quality-analysis .main-analysis::-webkit-scrollbar-thumb {
+  background-color: var(--blue); 
+  border-radius: 10px;
+}
+.home-page .home-flex .hf-right .home-water-quality-analysis .main-analysis::-webkit-scrollbar-thumb:hover{
+  background-color: var(--blue); 
+}
+.home-page .home-flex .hf-right .home-water-quality-analysis .main-analysis::-webkit-scrollbar-track {
+  background-color: var(--gray);  
+}
+.home-page .analysis-header{
+  margin-top: 20px;
+}
+.home-page .analysis-header .flex-header{
+  display: flex;
+  align-items: center;
+}
+.home-page .analysis-header .flex-header .header-inputs span{
+  color: rgba(0,0,0,.6);
+}
+.home-page .analysis-header .flex-header .header-inputs select{
+  margin-left: 12px;
+  border-radius: 10px;
+  padding: 5px 8px;
+  width: 200px;
+  border: 1px solid rgba(9, 95, 31, 0.2);
+  outline: none;
+}
+.home-page .analysis-header .flex-header .header-inputs select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 0.2rem rgba(14, 95, 50, 0.2);
+}
+.home-page .data-analysis{
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+.home-page .data-analysis .analysis-item .custom-analysis{
+  box-shadow: rgba(31, 31, 31, 0.2) 0px 2px 8px 0px;
+  background-color: var(--white);
+  padding: 12px;
+  border-radius: 12px;
+}
+.home-page .data-analysis .analysis-item .custom-analysis .home-map-flex{
+  display: flex;
+  align-items: center;
+}
+.home-page .data-analysis .analysis-item .custom-analysis .home-map-flex h1{
+  font-size: 1.0897em;
+  font-weight: normal;
+}
+.home-page .data-analysis .analysis-item .custom-analysis .home-map-flex a{
+  margin-left: auto;
+  margin-right: 0;
+  text-decoration: none;
+  color: var(--blue);
+  transition: color 0.3s ease;
+  font-size: .9em;
+}
+.home-page .data-analysis .analysis-item .custom-analysis .home-map-flex a{
+  margin-left: auto;
+  margin-right: 0;
+  text-decoration: none;
+  color: var(--blue);
+  transition: color 0.3s ease;
+  font-size: .8em;
+}
+.home-page .data-analysis .analysis-item .custom-analysis .graph a:hover{
+  color: var(--light-blue);
+}
+.home-page .data-analysis .analysis-item .custom-analysis .graph .plotly-chart::-webkit-scrollbar {
+  height: 4px;
+}
+.home-page .data-analysis .analysis-item .custom-analysis .graph .plotly-chart::-webkit-scrollbar-thumb {
+  background-color: var(--green); 
+  border-radius: 6px;
+}
+.home-page .data-analysis .analysis-item .custom-analysis .graph .plotly-chart::-webkit-scrollbar-thumb:hover{
+  background-color: var(--green); 
+}
+.home-page .data-analysis .analysis-item .custom-analysis .graph .plotly-chart::-webkit-scrollbar-track {
+  background-color: var(--gray);  
+}
+.home-page .data-analysis .analysis-item .custom-analysis .graph{
+  overflow: hidden;
+}
+.home-page .data-analysis .analysis-item .custom-analysis .graph .plotly-chart{
+  overflow: auto;
+}
+.whole-data-analyze{
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: rgba(22, 22, 22, 0.2) 0px 2px 8px 0px;
+}
+.whole-data-analyze p span{
+  color: var(--blue);
+}
+.whole-data-analyze .plotly-chart .plot-chart,
+.whole-data-analyze .graph{
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/*------------------------------------
+  Footer
+------------------------------------*/
+footer{
+  margin-top: 20px;
+  background-color: var(--black);
+  border-radius: 12px;
+  color: var(--white);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 30px;
+  padding-bottom: 100px;
+  position: relative;
+}
+
+footer .footer-item .footer-flex{
+  display: flex;
+}
+footer .footer-item .footer-flex .footer-left img{
+  height: 50px;
+  margin-right: 20px;
+}
+footer .footer-item .footer-flex .footer-right h1{
+  font-size: 1.2em;
+}
+footer .footer-item .footer-flex .footer-right p{
+  color: rgba(255,255,255,.3);
+  font-size: .867em;
+}
+
+footer .footer-item h1{
+  font-size: 1.135em;
+  margin-bottom: 20px;
+}
+footer .footer-item a{
+  display: block;
+  text-decoration: none;
+  line-height: 2;
+  color: rgba(255,255,255,.4);
+  font-size: .957em;
+}
+footer .footer-item a:hover{
+  color: rgba(255,255,255,.8);
+}
+footer .footer-copyright{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255,255,255,.3);
+  text-align: center;
+  width: 100%;
+}
+footer .footer-copyright a{
+  text-decoration: none;
+  color: var(--blue);
+}
+
+/*------------------------------------
+  Map
+------------------------------------*/
+.view-map .map-container {
+  width: 100%;
+  height: 95vh;
+  border-radius: 12px;
+  z-index: 0;
+  position: relative;
+}
+
+/*------------------------------------
+  Analysis
+------------------------------------*/
+.analysis-page .analysis-flex{
+  margin-top: 20px;
+  display: flex;
+}
+.analysis-page .analysis-flex .analysis-left{
+  margin-right: 10px;
+  width: 50%;
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph::-webkit-scrollbar {
+  height: 4px;
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph::-webkit-scrollbar-thumb {
+  background-color: var(--blue); 
+  border-radius: 6px;
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph::-webkit-scrollbar-thumb:hover{
+  background-color: var(--blue); 
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph::-webkit-scrollbar-track {
+  background-color: var(--gray);  
+}
+.analysis-page .analysis-flex .analysis-right{
+  flex: 1;
+  margin-left: 10px;
+}
+.analysis-page .analysis-flex .analysis-right .table-div{
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--light-blue);
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 12px;
+  overflow: auto;
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph .analysis-graph-flex{
+  display: flex;
+  align-items: center;
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph .analysis-graph-flex h1{
+  margin: 12px;
+  font-weight: normal;
+  font-size: 1.2em;
+  text-transform: capitalize;
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph .analysis-graph-flex select{
+  margin-left: 12px;
+  border-radius: 8px;
+  padding: 5px 8px;
+  width: 100px;
+  border: 1px solid rgba(0,0,0,0.2);
+  outline: none;
+  margin-left: auto;
+  margin-right: 10px;
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph .analysis-graph-flex select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 0.2rem rgb(43, 184, 196, .2);
+}
+.analysis-page .analysis-flex .analysis-left .analysis-graph .plotly-graph{
+  width: fit-content;
+  margin: 0 auto;
+}
+.analysis-not-found{
+  text-align: center;
+  font-size: 2em;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #2BB9C5;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #2D6179;
+  color: #ffffff;
+}
+
+
+/*------------------------------------
+  About
+------------------------------------*/
+.about-page .banner.CholoroWatch{
+  padding: 100px;
+  background: linear-gradient(rgba(7, 7, 7, 0.5), rgba(3, 3, 3, 0.452)), url(./assets/img/weather2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+}
+.about-page .banner .banner-title h1{
+  color: var(--white);
+  font-size: 2.5em;
+  text-align: center;
+}
+.about-page .banner .banner-title span{
+  color: rgba(255, 255, 255, 0.575);
+  display: block;
+  text-align: center;
+}
+.about-page .description{
+  width: 1140px;
+  margin: 0 auto;
+}
+.about-page .description h1{
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+.about-page .description p{
+  text-align: justify;
+  line-height: 1.5;
+  color: rgba(0,0,0,.7);
+}
+.about-page .description video,
+.about-page .description img{
+  min-width: 50%;
+  min-height: 300px;
+  max-width: 100%;
+  max-height: 500px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.about-page .description span{
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+/*------------------------------------
+  Media Query
+------------------------------------*/
+@media(max-width: 768px){
+  .analysis-page .analysis-flex .analysis-right{
+    margin: 0;
+  }
+  .analysis-page .analysis-flex .analysis-right .table-div{
+    border-radius: 5px;
+    width: 100%;
+    overflow: auto;
+    margin-top: 20px;
+  }
+  .home-page .home-flex,
+  .home-page .home-flex .hf-right .hf-analysis-grid,
+  .home-page .data-analysis,
+  footer{
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .home-page .home-flex .hf-left .home-map-analysis .main-map .main-map-left{
+    height: 300px;
+  }
+  .view-map .map-container{
+    height: 300px;
+  }
+  .home-page .analysis-header .flex-header,
+  footer .footer-item .footer-flex,
+  .analysis-page .analysis-flex,
+  .home-page .home-flex .hf-right .home-water-quality-analysis .home-map-flex{
+    display: block;
+  }
+  .home-page .analysis-header .flex-header .header-inputs select{
+    margin: 0;
+    margin-top: 5px;
+    width: 100%;
+  }
+  footer .footer-item .footer-flex .footer-right h1{
+    margin-top: 12px;
+  }
+  footer .footer-copyright{
+    display: block;
+    margin-top: 20px;
+  }
+  .about-page .description,
+  .analysis-page .analysis-flex .analysis-left,
+  .analysis-page .analysis-flex .analysis-left .analysis-graph .analysis-graph-flex{
+    width: 100%;
+  }
+  .about-page .banner .banner-title h1{
+    font-size: 1.5em;
+  }
+  .toggle-btn {
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: white;
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  .sidebar {
+    height: 100vh;
+    width: 44px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, var(--blue), var(--light-blue)); 
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  .sidebar nav{
+    padding: 3px;
+  }
+  .main-dash {
+    width: calc(100% - 70px);
+    padding: 15px;
+    margin-left: 40px;
+    overflow-x: hidden;
+  }
+
+
+  
+}
+.graph {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  width: 100%; /* Ensures it takes the full width */
+  max-width: 100%; /* Prevents overflow beyond container */
+}
+
+
